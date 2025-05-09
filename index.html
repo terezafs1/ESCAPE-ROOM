@@ -2,48 +2,70 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Estação Final - Escape Room</title>
+  <title>Escape Room - Fase Final</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
-      text-align: center;
-      padding: 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-    #content {
-      display: none;
-      margin-top: 30px;
+
+    #inputSection {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 10px;
     }
-    input[type="text"] {
+
+    #passwordInput {
       padding: 10px;
       width: 250px;
+      font-size: 16px;
+      margin-bottom: 10px;
     }
+
     button {
       padding: 10px 20px;
-      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
     }
+
     .error {
       color: red;
       margin-top: 10px;
     }
+
+    #parabens {
+      display: none;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url('parabens.jpg'); /* Substitua pelo nome real */
+      background-size: cover;
+      background-position: center;
+    }
   </style>
 </head>
-<body>
+<body style="background-image: url('fasefinal.jpg');"> <!-- Substitua pelo nome real -->
 
-  <h1>Desbloqueio Final</h1>
-  <p>Digite a senha para liberar o conteúdo:</p>
-
-  <input type="text" id="passwordInput" placeholder="Digite a senha aqui">
-  <br>
-  <button onclick="checkPassword()">Desbloquear</button>
-
-  <div class="error" id="errorMsg"></div>
-
-  <div id="content">
-    <h2>Parabéns!</h2>
-    <p>Você concluiu a missão com sucesso. A chave da segurança é o conhecimento e a prática!</p>
-    <p><strong>Missão Cumprida: Segurança do Paciente</strong></p>
+  <div id="inputSection">
+    <input type="text" id="passwordInput" placeholder="Digite a senha">
+    <br>
+    <button onclick="checkPassword()">Desbloquear</button>
+    <div class="error" id="errorMsg"></div>
   </div>
+
+  <div id="parabens"></div>
 
   <script>
     function checkPassword() {
@@ -51,11 +73,12 @@
       const senhaCorreta = "segurança do paciente";
 
       if (input === senhaCorreta) {
-        document.getElementById("content").style.display = "block";
+        document.getElementById("inputSection").style.display = "none";
+        document.body.style.backgroundImage = "url('parabens.jpg')";
+        document.getElementById("parabens").style.display = "block";
         document.getElementById("errorMsg").textContent = "";
       } else {
         document.getElementById("errorMsg").textContent = "Senha incorreta. Tente novamente.";
-        document.getElementById("content").style.display = "none";
       }
     }
   </script>
