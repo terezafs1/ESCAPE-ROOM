@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Estação Final - Escape Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 50px;
+    }
+    #content {
+      display: none;
+      margin-top: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Desbloqueio Final</h1>
+  <p>Digite a senha para liberar o conteúdo:</p>
+
+  <input type="text" id="passwordInput" placeholder="Digite a senha aqui">
+  <br>
+  <button onclick="checkPassword()">Desbloquear</button>
+
+  <div class="error" id="errorMsg"></div>
+
+  <div id="content">
+    <h2>Parabéns!</h2>
+    <p>Você concluiu a missão com sucesso. A chave da segurança é o conhecimento e a prática!</p>
+    <p><strong>Missão Cumprida: Segurança do Paciente</strong></p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.toLowerCase().trim();
+      const senhaCorreta = "segurança do paciente";
+
+      if (input === senhaCorreta) {
+        document.getElementById("content").style.display = "block";
+        document.getElementById("errorMsg").textContent = "";
+      } else {
+        document.getElementById("errorMsg").textContent = "Senha incorreta. Tente novamente.";
+        document.getElementById("content").style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
